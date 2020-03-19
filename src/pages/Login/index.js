@@ -10,7 +10,30 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState("");
 
-  async function signUp() {}
+  function handleUsername(e) {
+    setUsername(e.target.value);
+  }
+
+  function handlePassword(e) {
+    setPassword(e.target.value);
+  }
+
+  async function signUp(e) {
+    e.preventDefault();
+
+    setLoading(true);
+
+    const result = await api.post("/authentication/", {
+      username: username,
+      password: password
+    });
+
+    if (result.status(200)) {
+      localStorage.setItem("data", result.data);
+    } else {
+      alert("Não foi possivel realizar o login");
+    }
+  }
 
   return (
     <>
@@ -24,9 +47,7 @@ export default function Login() {
               type="text"
               placeholder="exemplo@exemplo.com"
               value={username}
-              onChange={e => {
-                setUsername(e.target.value);
-              }}
+              onChange={e => handleUsername(e)}
             />
           </div>
           <div className="login-form__password">
@@ -35,13 +56,11 @@ export default function Login() {
               type="password"
               placeholder="********"
               value={password}
-              onChange={e => {
-                setPassword(e.target.value);
-              }}
+              onChange={e => handlePassword(e)}
             />
           </div>
           <div className="login-form__button">
-            <button onClick={signUp()}>Entrar</button>
+            <button onClick={e => signUp(e)}>Entrar</button>
           </div>
         </div>
       </main>
