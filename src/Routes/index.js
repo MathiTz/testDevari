@@ -11,10 +11,9 @@ export default function Routes() {
   return (
     <Switch>
       <Route path="/" exact component={Login} />
-
       <Route path="/main" component={Recipes} isPrivate />
-      <Route path="/main/recipes" component={MineRecipe} isPrivate />
-      <Route path="/main/recipes/create" component={RecipeCreate} isPrivate />
+      <Route path="/recipes" component={MineRecipe} isPrivate />
+      <Route path="/create" component={RecipeCreate} isPrivate />
     </Switch>
   );
 }

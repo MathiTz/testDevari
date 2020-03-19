@@ -1,45 +1,43 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
+import { useDispatch, useSelector } from "react-redux";
+
+import { signOut } from "../../store/modules/auth/actions";
+
+import "./style.css";
+
 export default function HeaderIndex() {
-  const [data, setData] = useState([]);
-  const [image, setImage] = useState("");
-  const [name, setName] = useState("");
-
-  useEffect(() => {
-    async function getData() {
-      const dataResult = localStorage.getItem("data");
-
-      setData([dataResult]);
-    }
-
-    getData();
-  }, []);
+  const dispatch = useDispatch();
+  const name = useSelector(state => state.auth.name);
+  const image = useSelector(state => state.auth.image);
 
   return (
     <>
-      <header className="container header-login">
-        <h1>DEV</h1>
-        <span>food</span>
-        <nav>
+      <header className="container header-index">
+        <div className="header-index__logo">
+          <h1>DEV</h1>
+          <span>food</span>
+        </div>
+        <nav className="header-index__nav">
           <ul>
             <li>
               <Link to="/main">Receitas</Link>
-              <Link to="/main/recipes">Minhas Receitas</Link>
-              <Link to="/main/recipes/create">Adicionar Receitas</Link>
-            </li>
-            <li>
-              <div>
-                <h1>Nome</h1>
-                <img src={image} alt="DevFood User" />
-              </div>
-              <span></span>
-              <Link to="/">Sair</Link>
+              <Link to="/recipes">Minhas Receitas</Link>
+              <Link to="/create">Adicionar Receitas</Link>
             </li>
           </ul>
         </nav>
+        <div className="header-index__user-logout">
+          <div>
+            <h1>{name}</h1>
+            <img src={image} alt="DevFood User" />
+          </div>
+          <span></span>
+          <button onClick={() => dispatch(signOut())}> Sair</button>
+        </div>
       </header>
-      <div className="container blue-div-login"></div>
+      <div className="container blue-div-index"></div>
     </>
   );
 }

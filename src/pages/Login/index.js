@@ -1,23 +1,20 @@
 import React, { useState } from "react";
-import HeaderLogin from "../../components/HeaderLogin";
 
-import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
-import api from "../../services/api";
+import { signInRequest } from "../../store/modules/auth/actions";
 
 import "./style.css";
 
 export default function Login() {
   // username matheusalves789@gmail.com
   // password p1gccn3n
-  const [username, setUsername] = useState("matheusalves789@gmail.com");
+  const [email, setEmail] = useState("matheusalves789@gmail.com");
   const [password, setPassword] = useState("p1gccn3n");
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const history = useHistory();
+  const dispatch = useDispatch();
 
-  function handleUsername(e) {
-    setUsername(e.target.value);
+  function handleEmail(e) {
+    setEmail(e.target.value);
   }
 
   function handlePassword(e) {
@@ -27,28 +24,11 @@ export default function Login() {
   async function signUp(e) {
     e.preventDefault();
 
-    setLoading(true);
-
-    const result = await api.post("/authentication/", {
-      username: username,
-      password: password
-    });
-
-    if (result.status === 200) {
-      const dataResult = JSON.stringify(result.data);
-      setData(dataResult);
-      localStorage.setItem("data", dataResult);
-      setLoading(false);
-      window.location.reload();
-      history.push("/main");
-    } else {
-      alert("Não foi possivel realizar o login");
-    }
+    dispatch(signInRequest(email, password));
   }
 
   return (
     <>
-      <HeaderLogin />
       <main className="container login-page">
         <section className="login-title">Entre na sua conta</section>
         <div className="login-form">
@@ -57,8 +37,8 @@ export default function Login() {
             <input
               type="text"
               placeholder="exemplo@exemplo.com"
-              value={username}
-              onChange={e => handleUsername(e)}
+              value={email}
+              onChange={e => handleEmail(e)}
             />
           </div>
           <div className="login-form__password">

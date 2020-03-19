@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
-import Login from "../pages/Login";
-import Main from "../pages/Main";
+import DefaultLayout from "../layouts/DefaultLayout";
+import AuthLayout from "../layouts/AuthLayout";
 
 import { store } from "../store";
 
@@ -21,7 +21,7 @@ export default function RouteWrapper({
     return <Redirect to="/main" />;
   }
 
-  const Layout = signed ? Main : Login;
+  const Layout = signed ? DefaultLayout : AuthLayout;
 
   return (
     <Route
