@@ -1,0 +1,23 @@
+.header-login {
+  height: 70px;
+  background-color: #ff6600;
+  align-items: center;
+  opacity: 0.8;
+}
+
+.header-login h1 {
+  margin: 0 0 0 30px;
+  font-style: italic;
+  font-size: 20px;
+  color: #fff;
+}
+
+.header-login span {
+  color: #00498d;
+  font-size: 20px;
+}
+
+.blue-div-login {
+  height: 10px;
+  background-color: #00498d;
+}

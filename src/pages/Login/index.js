@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import HeaderLogin from "../../components/HeaderLogin";
 
+import { useHistory } from "react-router-dom";
+
 import api from "../../services/api";
 
 import "./style.css";
 
 export default function Login() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState("");
+  // username matheusalves789@gmail.com
+  // password p1gccn3n
+  const [username, setUsername] = useState("matheusalves789@gmail.com");
+  const [password, setPassword] = useState("p1gccn3n");
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const history = useHistory();
 
   function handleUsername(e) {
     setUsername(e.target.value);
@@ -28,8 +34,13 @@ export default function Login() {
       password: password
     });
 
-    if (result.status(200)) {
-      localStorage.setItem("data", result.data);
+    if (result.status === 200) {
+      const dataResult = JSON.stringify(result.data);
+      setData(dataResult);
+      localStorage.setItem("data", dataResult);
+      setLoading(false);
+      window.location.reload();
+      history.push("/main");
     } else {
       alert("Não foi possivel realizar o login");
     }

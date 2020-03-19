@@ -1,40 +1,20 @@
-import React, { useEffect, useState } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect,
-  useHistory,
-  useLocation
-} from "react-router-dom";
+import React from "react";
+import { Switch } from "react-router-dom";
+import Route from "./Route";
 
 import Login from "../pages/Login";
-import Main from "../pages/Main";
+import RecipeCreate from "../components/RecipeCreate";
+import MineRecipe from "../components/MineRecipes";
+import Recipes from "../components/Recipes";
 
 export default function Routes() {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    function checkData() {
-      setData(localStorage.getItem("data"));
-    }
-
-    checkData();
-  }, []);
-
   return (
-    <Router>
-      <Route path="/" component={Login} />
-      <Route path="/main" component={Main} />
+    <Switch>
+      <Route path="/" exact component={Login} />
 
-      <Switch>
-        {data === null ? (
-          <Redirect to={{ pathname: "/" }} />
-        ) : (
-          <Redirect to={{ pathname: "/main" }} />
-        )}
-      </Switch>
-    </Router>
+      <Route path="/main" component={Recipes} isPrivate />
+      <Route path="/main/recipes" component={MineRecipe} isPrivate />
+      <Route path="/main/recipes/create" component={RecipeCreate} isPrivate />
+    </Switch>
   );
 }

@@ -1,9 +1,12 @@
 import React from "react";
 
-export default function Main() {
+import HeaderIndex from "../../components/HeaderIndex";
+
+export default function Main({ children }) {
   return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
+    <>
+      <HeaderIndex />
+      <div className="container">{children}</div>
+    </>
   );
 }
