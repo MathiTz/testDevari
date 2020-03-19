@@ -50,4 +50,26 @@
   width: 280px;
   height: 180px;
   background-color: #fff;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.recipes-info h4 {
+  margin: 5px 5px;
+  color: #ff6600;
+  font-size: 14px;
+}
+
+.recipes-info p {
+  font-size: 12px;
+  margin: 5px 5px;
+  color: #00498d;
+}
+
+.recipes-info a {
+  color: #ff6600;
+  text-decoration: none;
+  display: flex;
+  justify-content: flex-end;
+  margin: 40px 20px;
 }
