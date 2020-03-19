@@ -11,6 +11,7 @@ export default function HeaderIndex() {
   const dispatch = useDispatch();
   const name = useSelector(state => state.auth.name);
   const image = useSelector(state => state.auth.image);
+  const user = useSelector(state => state.auth.user);
 
   return (
     <>
@@ -23,7 +24,7 @@ export default function HeaderIndex() {
           <ul>
             <li>
               <Link to="/main">Receitas</Link>
-              <Link to="/recipes">Minhas Receitas</Link>
+              <Link to={`/recipes/${user}`}>Minhas Receitas</Link>
               <Link to="/create">Adicionar Receitas</Link>
             </li>
           </ul>

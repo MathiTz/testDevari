@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import api from "../../services/api";
 
 import "./style.css";
+import { Link } from "react-router-dom";
 
 export default function Recipes() {
   const [data, setData] = useState([]);
@@ -31,7 +32,13 @@ export default function Recipes() {
               <section className="recipes-info">
                 <h4>{d.title}</h4>
                 <p>{d.description}</p>
-                <a href="/">Ver Receita</a>
+                <Link
+                  to={{
+                    pathname: `/recipe/${d.id}`
+                  }}
+                >
+                  Ver Receita
+                </Link>
               </section>
             </div>
           ))}
