@@ -7,6 +7,7 @@ import RecipeCreate from "../components/RecipeCreate";
 import MineRecipe from "../components/MineRecipes";
 import Recipes from "../components/Recipes";
 import IndividualRecipe from "../components/IndividualRecipe";
+import RecipeEdit from "../components/RecipeEdit";
 
 export default function Routes() {
   return (
@@ -16,6 +17,7 @@ export default function Routes() {
       <Route path="/recipe/:id" component={IndividualRecipe} isPrivate />
       <Route path="/recipes/:id" component={MineRecipe} isPrivate />
       <Route path="/create" component={RecipeCreate} isPrivate />
+      <Route path="/edit/:id" component={RecipeEdit} isPrivate />
     </Switch>
   );
 }

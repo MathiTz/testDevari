@@ -197,6 +197,12 @@
   align-items: center;
   background-color: #fff;
 }
+.recipe-create__box svg {
+  cursor: pointer;
+  position: relative;
+  bottom: 220px;
+  left: 450px;
+}
 
 .recipe-create__box form {
   width: 300px;

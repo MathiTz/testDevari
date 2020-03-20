@@ -36,7 +36,7 @@ export default function MineRecipe() {
                 <p>{d.description}</p>
                 <Link
                   to={{
-                    pathname: `/create/${d.id}`
+                    pathname: `/edit/${d.id}`
                   }}
                 >
                   Editar
