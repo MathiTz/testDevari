@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 
 import { useParams, Link } from "react-router-dom";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+
 import "../style.css";
 import api from "../../services/api";
 
@@ -21,12 +24,13 @@ export default function IndividualRecipe() {
     getRecipe();
   }, [id]);
 
-  console.log(recipe);
-
   return (
     <div className="individual-recipe">
       <section className="login-title">
-        <Link to="/main">Voltar</Link>
+        <Link to="/main">
+          <FontAwesomeIcon icon={faArrowLeft} />
+          Voltar
+        </Link>
         <h4>{recipe.title}</h4>
       </section>
       <main className="individual-recipe__info">
