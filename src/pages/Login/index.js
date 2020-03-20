@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 
 import { signInRequest } from "../../store/modules/auth/actions";
 
-import "./style.css";
+import "../style.css";
 
 export default function Login() {
   // username matheusalves789@gmail.com

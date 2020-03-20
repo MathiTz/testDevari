@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { signOut } from "../../store/modules/auth/actions";
 
-import "./style.css";
+import "../style.css";
 
 export default function HeaderIndex() {
   const dispatch = useDispatch();
